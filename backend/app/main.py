@@ -2,13 +2,12 @@ from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 
-# Используем относительные импорты внутри приложения app
 from .database import Base, engine, get_db
 from .models.user import TypingSession
 from .core.text_generator import generate_text
 from .schemas.typing import TypingResultCreate
+from .api.auth import router as auth_router # <-- Импортируем Auth роутер
 
-# Создаём таблицы
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Blinput API")
@@ -20,6 +19,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Подключаем роутер авторизации
+app.include_router(auth_router)
 
 @app.get("/")
 def read_root():
