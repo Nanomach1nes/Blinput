@@ -6,6 +6,5 @@ __pycache__/
 .idea/
 .vscode/
 *.sqlite3
-# Фронтенд
 frontend/node_modules/
 frontend/dist/
