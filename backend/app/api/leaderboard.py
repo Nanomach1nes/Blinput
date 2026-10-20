@@ -19,7 +19,7 @@ class LeaderboardItem(BaseModel):
     class Config:
         from_attributes = True
 
-@router.get("", response_model=List[LeaderboardItem])
+@router.get("/", response_model=List[LeaderboardItem])
 def get_leaderboard(
     metric: str = Query("wpm", regex="^(wpm|accuracy|exp)$"),
     period: str = Query("all", regex="^(day|week|all)$"),
