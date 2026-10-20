@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-export default function Leaderboard() {
+export default function LeaderboardPage() {
   const [metric, setMetric] = useState('wpm'); // wpm, accuracy, exp
   const [period, setPeriod] = useState('all'); // day, week, all
   const [leaders, setLeaders] = useState([]);
@@ -29,12 +29,13 @@ export default function Leaderboard() {
   }, [metric, period]);
 
   return (
-    <div className="leaderboard-container" style={{ padding: '20px', maxWidth: '600px', margin: '0 auto' }}>
+    <div className="leaderboard-container" style={{ padding: '20px', maxWidth: '600px', margin: '0 auto', color: '#fff' }}>
       <h2>Таблица лидеров</h2>
+      <p style={{ color: '#aaa', marginBottom: '20px' }}>Скорость, точность и опыт — за сегодня, неделю и всё время.</p>
 
       {/* Фильтры по метрикам */}
       <div className="filters-group" style={{ marginBottom: '10px' }}>
-        <span>Метрика: </span>
+        <span style={{ marginRight: '10px' }}>Метрика: </span>
         {['wpm', 'accuracy', 'exp'].map((m) => (
           <button
             key={m}
@@ -42,21 +43,22 @@ export default function Leaderboard() {
             style={{
               marginRight: '5px',
               fontWeight: metric === m ? 'bold' : 'normal',
-              background: metric === m ? '#007bff' : '#f8f9fa',
-              color: metric === m ? '#fff' : '#000',
-              border: '1px solid #ccc',
-              padding: '5px 10px',
+              background: metric === m ? '#e50914' : '#222',
+              color: '#fff',
+              border: '1px solid #444',
+              padding: '6px 12px',
+              borderRadius: '4px',
               cursor: 'pointer'
             }}
           >
-            {m.toUpperCase()}
+            {m === 'wpm' ? 'Скорость' : m === 'accuracy' ? 'Точность' : 'Опыт'}
           </button>
         ))}
       </div>
 
       {/* Фильтры по периодам */}
       <div className="filters-group" style={{ marginBottom: '20px' }}>
-        <span>Период: </span>
+        <span style={{ marginRight: '10px' }}>Период: </span>
         {['day', 'week', 'all'].map((p) => (
           <button
             key={p}
@@ -64,10 +66,11 @@ export default function Leaderboard() {
             style={{
               marginRight: '5px',
               fontWeight: period === p ? 'bold' : 'normal',
-              background: period === p ? '#28a745' : '#f8f9fa',
-              color: period === p ? '#fff' : '#000',
-              border: '1px solid #ccc',
-              padding: '5px 10px',
+              background: period === p ? '#007bff' : '#222',
+              color: '#fff',
+              border: '1px solid #444',
+              padding: '6px 12px',
+              borderRadius: '4px',
               cursor: 'pointer'
             }}
           >
@@ -80,30 +83,31 @@ export default function Leaderboard() {
       {loading && <p>Загрузка...</p>}
       {error && <p style={{ color: 'red' }}>{error}</p>}
 
+
       {!loading && !error && (
-        <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+        <table style={{ width: '100%', borderCollapse: 'collapse', background: '#1a1a1a', borderRadius: '8px', overflow: 'hidden' }}>
           <thead>
-            <tr style={{ borderBottom: '2px solid #ccc', textAlign: 'left' }}>
-              <th style={{ padding: '8px' }}>#</th>
-              <th style={{ padding: '8px' }}>Имя</th>
-              <th style={{ padding: '8px' }}>Уровень</th>
-              <th style={{ padding: '8px' }}>Результат ({metric.toUpperCase()})</th>
+            <tr style={{ borderBottom: '2px solid #333', textAlign: 'left', background: '#252525' }}>
+              <th style={{ padding: '12px' }}>#</th>
+              <th style={{ padding: '12px' }}>Имя</th>
+              <th style={{ padding: '12px' }}>Уровень</th>
+              <th style={{ padding: '12px' }}>Результат ({metric.toUpperCase()})</th>
             </tr>
           </thead>
           <tbody>
             {leaders.length === 0 ? (
               <tr>
-                <td colSpan="4" style={{ textAlign: 'center', padding: '20px' }}>
+                <td colSpan="4" style={{ textAlign: 'center', padding: '20px', color: '#888' }}>
                   Пока нет результатов.
                 </td>
               </tr>
             ) : (
               leaders.map((item) => (
-                <tr key={item.rank} style={{ borderBottom: '1px solid #eee' }}>
-                  <td style={{ padding: '8px' }}>{item.rank}</td>
-                  <td style={{ padding: '8px' }}>{item.username}</td>
-                  <td style={{ padding: '8px' }}>{item.level}</td>
-                  <td style={{ padding: '8px', fontWeight: 'bold' }}>{item.score}</td>
+                <tr key={item.rank} style={{ borderBottom: '1px solid #333' }}>
+                  <td style={{ padding: '12px' }}>{item.rank}</td>
+                  <td style={{ padding: '12px' }}>{item.username}</td>
+                  <td style={{ padding: '12px' }}>{item.level}</td>
+                  <td style={{ padding: '12px', fontWeight: 'bold', color: '#4caf50' }}>{item.score}</td>
                 </tr>
               ))
             )}
