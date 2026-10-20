@@ -2,8 +2,8 @@
 const pick = (a) => a[Math.floor(Math.random() * a.length)];
 
 const WORDS_EN = ["array", "loop", "server", "client", "query", "stack", "token", "cache", "route", "state", "event", "hook", "build", "merge", "input", "speed", "focus", "rhythm", "thread", "binary"];
-const WORDS_RU = ["алгоритм", "функция", "массив", "цикл", "клавиатура", "скорость", "точность", "хакатон", "сервер", "клиент", "данные", "поток", "память", "запрос"];
-const SENT_RU = ["Быстрая коричневая лиса прыгает через ленивую собаку.", "Тот, кто печатает не глядя, видит больше.", "Каждая ошибка делает следующий удар точнее.", "Ровный ритм важнее скорости."];
+const WORDS_RU = ["алгоритм", "корпорация", "Арасака", "Милитех", "хром", "скорость", "точность", "хакатон", "сервер", "скрипт", "данные", "поток", "память", "запрос"];
+const SENT_RU = ["Единственная разница между хорошим и плохим днём — это твоё отношение к нему.", "Не стоит понимать доброту за слабость, грубость за силу, а подлость за умение жить.", "Каждая ошибка делает следующий удар точнее.", "Ровный ритм важнее скорости."];
 const SENT_EN = ["The quick brown fox jumps over the lazy dog.", "Practice makes the fingers remember.", "Steady rhythm beats raw speed.", "Look at the screen, not at the keys."];
 const CODE = [
   "def calculate_wpm(words, seconds):\n    return (words / seconds) * 60",
