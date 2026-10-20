@@ -1,2 +1,2 @@
-from backend.app.database import Base
-from backend.app.models.user import User, TypingSession
+from app.database import Base
+from app.models.user import User, TypingSession
