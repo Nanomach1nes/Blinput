@@ -139,7 +139,7 @@ export default function Trainer({ level }) {
         </>
       ) : (
         <div className="panel result">
-          <h2>Заезд окончен</h2>
+          <h2>Взлом завершён</h2>
           <div className="cards">
             {[["Сл/мин", result.wpm], ["Зн/мин", result.cpm], ["Точность", `${result.accuracy}%`], ["Ошибки", result.errors_count], ["Макс. комбо", result.maxCombo], ["Очки", result.score], ["Опыт", `+${result.exp}`]]
               .map(([k, v]) => <div className="stat" key={k}><span>{k}</span><b>{v}</b></div>)}
