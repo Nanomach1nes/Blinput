@@ -2,6 +2,7 @@ from datetime import datetime, timedelta, timezone
 from typing import Optional
 from passlib.context import CryptContext
 from jose import jwt, JWTError
+from .config import SECRET_KEY, ALGORITHM
 
 # Секретный ключ для подписи JWT (на хакатоне пока хардкодим, в прод уходит в .env)
 SECRET_KEY = "CYBERBREAK_SUPER_SECRET_KEY_2026"
