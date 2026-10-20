@@ -6,6 +6,8 @@ import Achievements from "./pages/Achievements.jsx";
 import Leaderboard from "./pages/Leaderboard.jsx";
 import Auth from "./pages/Auth.jsx";
 import { useHistory, levelInfo, totalExp } from "./store.js";
+import LeaderboardPage from './pages/Leaderboard';
+
 
 export default function App() {
   const [user, setUser] = useState(() => localStorage.getItem("username"));
